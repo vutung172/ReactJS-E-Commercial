@@ -865,7 +865,7 @@ export default function HomeComponent() {
                                           className="addToWishlist"
                                           href="#"
                                           data-rel={1}
-                                          onclick=""
+                                         
                                         >
                                           <i
                                             className="fa fa-heart"
@@ -972,7 +972,7 @@ export default function HomeComponent() {
                                           className="addToWishlist"
                                           href="#"
                                           data-rel={1}
-                                          onclick=""
+                                          
                                         >
                                           <i
                                             className="fa fa-heart"
@@ -1073,7 +1073,7 @@ export default function HomeComponent() {
                                           className="addToWishlist"
                                           href="#"
                                           data-rel={1}
-                                          onclick=""
+                                          
                                         >
                                           <i
                                             className="fa fa-heart"
@@ -1184,7 +1184,7 @@ export default function HomeComponent() {
                                           className="addToWishlist"
                                           href="#"
                                           data-rel={1}
-                                          onclick=""
+                                          
                                         >
                                           <i
                                             className="fa fa-heart"
@@ -1291,7 +1291,7 @@ export default function HomeComponent() {
                                           className="addToWishlist"
                                           href="#"
                                           data-rel={1}
-                                          onclick=""
+                                          
                                         >
                                           <i
                                             className="fa fa-heart"
@@ -1392,7 +1392,7 @@ export default function HomeComponent() {
                                           className="addToWishlist"
                                           href="#"
                                           data-rel={1}
-                                          onclick=""
+                                          
                                         >
                                           <i
                                             className="fa fa-heart"
@@ -1503,7 +1503,7 @@ export default function HomeComponent() {
                                           className="addToWishlist"
                                           href="#"
                                           data-rel={1}
-                                          onclick=""
+                                          
                                         >
                                           <i
                                             className="fa fa-heart"
@@ -1610,7 +1610,7 @@ export default function HomeComponent() {
                                           className="addToWishlist"
                                           href="#"
                                           data-rel={1}
-                                          onclick=""
+                                          
                                         >
                                           <i
                                             className="fa fa-heart"
@@ -1717,7 +1717,7 @@ export default function HomeComponent() {
                                           className="addToWishlist"
                                           href="#"
                                           data-rel={1}
-                                          onclick=""
+                                          
                                         >
                                           <i
                                             className="fa fa-heart"
@@ -1890,7 +1890,7 @@ export default function HomeComponent() {
                                             className="addToWishlist"
                                             href="#"
                                             data-rel={1}
-                                            onclick=""
+                                            
                                           >
                                             <i
                                               className="fa fa-heart"
@@ -1988,7 +1988,7 @@ export default function HomeComponent() {
                                             className="addToWishlist"
                                             href="#"
                                             data-rel={1}
-                                            onclick=""
+                                            
                                           >
                                             <i
                                               className="fa fa-heart"
@@ -2085,7 +2085,7 @@ export default function HomeComponent() {
                                             className="addToWishlist"
                                             href="#"
                                             data-rel={1}
-                                            onclick=""
+                                            
                                           >
                                             <i
                                               className="fa fa-heart"
@@ -2183,7 +2183,7 @@ export default function HomeComponent() {
                                             className="addToWishlist"
                                             href="#"
                                             data-rel={1}
-                                            onclick=""
+                                            
                                           >
                                             <i
                                               className="fa fa-heart"
@@ -2280,7 +2280,7 @@ export default function HomeComponent() {
                                             className="addToWishlist"
                                             href="#"
                                             data-rel={1}
-                                            onclick=""
+                                            
                                           >
                                             <i
                                               className="fa fa-heart"
@@ -2375,7 +2375,7 @@ export default function HomeComponent() {
                                             className="addToWishlist"
                                             href="#"
                                             data-rel={1}
-                                            onclick=""
+                                            
                                           >
                                             <i
                                               className="fa fa-heart"
@@ -2606,7 +2606,7 @@ export default function HomeComponent() {
                                             className="addToWishlist"
                                             href="#"
                                             data-rel={1}
-                                            onclick=""
+                                            
                                           >
                                             <i
                                               className="fa fa-heart"
@@ -2718,7 +2718,7 @@ export default function HomeComponent() {
                                             className="addToWishlist"
                                             href="#"
                                             data-rel={1}
-                                            onclick=""
+                                            
                                           >
                                             <i
                                               className="fa fa-heart"
@@ -2824,7 +2824,7 @@ export default function HomeComponent() {
                                             className="addToWishlist"
                                             href="#"
                                             data-rel={1}
-                                            onclick=""
+                                            
                                           >
                                             <i
                                               className="fa fa-heart"
@@ -2941,7 +2941,7 @@ export default function HomeComponent() {
                                             className="addToWishlist"
                                             href="#"
                                             data-rel={1}
-                                            onclick=""
+                                            
                                           >
                                             <i
                                               className="fa fa-heart"
@@ -3053,7 +3053,7 @@ export default function HomeComponent() {
                                             className="addToWishlist"
                                             href="#"
                                             data-rel={1}
-                                            onclick=""
+                                            
                                           >
                                             <i
                                               className="fa fa-heart"
@@ -3159,7 +3159,7 @@ export default function HomeComponent() {
                                             className="addToWishlist"
                                             href="#"
                                             data-rel={1}
-                                            onclick=""
+                                            
                                           >
                                             <i
                                               className="fa fa-heart"
@@ -3276,7 +3276,7 @@ export default function HomeComponent() {
                                             className="addToWishlist"
                                             href="#"
                                             data-rel={1}
-                                            onclick=""
+                                            
                                           >
                                             <i
                                               className="fa fa-heart"
@@ -3388,7 +3388,7 @@ export default function HomeComponent() {
                                             className="addToWishlist"
                                             href="#"
                                             data-rel={1}
-                                            onclick=""
+                                            
                                           >
                                             <i
                                               className="fa fa-heart"
@@ -3500,7 +3500,7 @@ export default function HomeComponent() {
                                             className="addToWishlist"
                                             href="#"
                                             data-rel={1}
-                                            onclick=""
+                                            
                                           >
                                             <i
                                               className="fa fa-heart"
