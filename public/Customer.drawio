@@ -1,0 +1,26 @@
+<mxfile host="65bd71144e">
+    <diagram id="AjapZ2qnGEEUXxZgGf_5" name="Page-1">
+        <mxGraphModel dx="1770" dy="896" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <object label="Json server" id="2">
+                    <mxCell style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                        <mxGeometry x="10" y="120" width="120" height="150" as="geometry"/>
+                    </mxCell>
+                </object>
+                <mxCell id="6" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="380" y="120" width="340" height="350" as="geometry"/>
+                </mxCell>
+                <object label="" id="4">
+                    <mxCell style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="6">
+                        <mxGeometry width="340" height="320" as="geometry"/>
+                    </mxCell>
+                </object>
+                <mxCell id="5" value="Store" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="6">
+                    <mxGeometry x="100" y="290" width="120" height="60" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

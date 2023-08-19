@@ -1,0 +1,148 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "userID": "user1",
+      "firstName": "user",
+      "lastName": "one",
+      "password": "12345",
+      "email": "1@example.com",
+      "phone": "111111111",
+      "address": "Address-1",
+      "nickName": "user-1",
+      "age": 30,
+      "birth": "02/02/1995",
+      "role": "customer"
+    },
+    {
+      "id": 2,
+      "userID": "user2",
+      "firstName": "user",
+      "lastName": "two",
+      "password": "22222222",
+      "email": "2@example.com",
+      "phone": "22222222",
+      "address": "Address-2",
+      "nickName": "user-2",
+      "age": 30,
+      "birth": "02/02/1995",
+      "role": "customer"
+    },
+    {
+      "id": 3,
+      "userID": "admin1",
+      "firstName": "admin",
+      "lastName": "one",
+      "password": "12345",
+      "email": "admin1@example.com",
+      "phone": "9111111",
+      "address": "AddressAdmin-1",
+      "nickName": "Admin-1",
+      "age": 30,
+      "birth": "02/02/1995",
+      "role": "admin"
+    },
+    {
+      "id": 4,
+      "userID": "master",
+      "firstName": "master",
+      "lastName": "one",
+      "password": "11111",
+      "email": "master@example.com",
+      "phone": "33333333",
+      "address": "Address-3",
+      "nickName": "Master",
+      "age": 32,
+      "birth": "02/02/1991",
+      "role": "master"
+    }
+  ],
+  "products": [
+    {
+      "name": "new product 2",
+      "price": 1300,
+      "categoryId": 2,
+      "discount": 12,
+      "image": "https://firebasestorage.googleapis.com/v0/b/e-website-4efbb.appspot.com/o/filesUpload%2FProducts%2FIMG%2Fprinted-summer-dress4.jpg?alt=media&token=4e584d50-2760-4142-99ee-6aade3a8a96b",
+      "id": "004053f5-5330-4266-98bf-bb31b1e6e729"
+    },
+    {
+      "id": "2ef5247b-f9f6-4584-b972-ffe9eac6b23e",
+      "name": "New product 3",
+      "price": 1300,
+      "categoryId": 1,
+      "discount": 12,
+      "image": "https://firebasestorage.googleapis.com/v0/b/e-website-4efbb.appspot.com/o/filesUpload%2FProducts%2FIMG%2Fprinted-summer-dress.jpg?alt=media&token=b7d80b34-9778-4171-9fe3-8d904a13d52e"
+    },
+    {
+      "name": "New product 4",
+      "price": 1400,
+      "discount": 14,
+      "image": "https://firebasestorage.googleapis.com/v0/b/e-website-4efbb.appspot.com/o/filesUpload%2FProducts%2FIMG%2Ffaded-short-sleeves-tshirt.jpg?alt=media&token=ce2ff7b3-179b-420c-9bda-52cea78bf373",
+      "categoryId": 1,
+      "id": "0d5daf3a-c645-4e33-b4a7-bf9615dedddf"
+    },
+    {
+      "name": "New product 5",
+      "categoryId": 2,
+      "price": 1500,
+      "discount": 15,
+      "image": "https://firebasestorage.googleapis.com/v0/b/e-website-4efbb.appspot.com/o/filesUpload%2FProducts%2FIMG%2Fblouse.jpg?alt=media&token=9733e4b3-41c2-4ea7-8759-1ab38d214772",
+      "id": "0a238fcf-205e-44c6-be20-ff80f7abead4"
+    },
+    {
+      "name": "new prodcut 6",
+      "price": 1600,
+      "categoryId": "2",
+      "discount": 16,
+      "image": "https://firebasestorage.googleapis.com/v0/b/e-website-4efbb.appspot.com/o/filesUpload%2FProducts%2FIMG%2Fprinted-chiffon-dress4.jpg?alt=media&token=4d21fa42-613b-46f4-9579-7cf39b3c4cc2",
+      "id": "c1bdce23-590b-4bd1-b67b-91cb135cbdc2"
+    }
+  ],
+  "Category": [
+    {
+      "id": 1,
+      "name": "clothes",
+      "status": true
+    },
+    {
+      "id": 2,
+      "name": "shoe",
+      "status": true
+    },
+    {
+      "id": 3,
+      "name": "accessory",
+      "status": true
+    },
+    {
+      "id": 4,
+      "name": "bag",
+      "status": true
+    }
+  ],
+  "orders": [
+    {
+      "id": "004053f5-5330-4266-1111-bb31b1e6e729",
+      "customerName": "user1",
+      "email": "1@example.com",
+      "phone": "111111111",
+      "purchasedDate": "2023-08-11 19:11:11",
+      "status": 1
+    }
+  ],
+  "order_details": [
+    {
+      "orderId": "004053f5-5330-4266-1111-bb31b1e6e729",
+      "productId": "004053f5-5330-4266-98bf-bb31b1e6e729",
+      "price": 1300,
+      "quantity": 3
+    },
+    {
+      "orderId": "004053f5-5330-4266-1111-bb31b1e6e729",
+      "productId": "2ef5247b-f9f6-4584-b972-ffe9eac6b23e",
+      "price": 1300,
+      "quantity": 3
+    }
+  ]
+}
