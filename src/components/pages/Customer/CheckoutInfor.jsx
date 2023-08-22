@@ -1,28 +1,52 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function CheckoutInfor() {
+
   const [currentShippingInfor, setCurrentShippingInfor] = useState({});
-  const [ myShippingInfor, setMyShippingInfor ] = useState({});
 
   const [shippingInfor, setShippingInfor] = useState({});
-  const user = JSON.parse(localStorage.getItem("myuser") || "[]")
-
-  useEffect(() => {
-    setMyShippingInfor(user);
-    console.log(myShippingInfor);
-  },[])
+  const user = JSON.parse(localStorage.getItem("myuser") || "[]");
   
 
-  const handleOnchange = (evt) => {
-    setCurrentShippingInfor({...currentShippingInfor, [evt.target.name]: evt.target.value});
+  const [isSelected, setIsSelected] = useState(true)
+  const [isMount, setIsMount] = useState(false)
+
+  useEffect(() => {
+    console.log(user);
+    setCurrentShippingInfor(user);
     console.log(currentShippingInfor);
+    if (isSelected) {
+      setCurrentShippingInfor(user);
+      console.log(currentShippingInfor);
+    } else {
+      setCurrentShippingInfor({});
+      console.log(currentShippingInfor);
+    }
+  },[isSelected])
+
+
+
+  const handleOnchange = (evt) => {
+    setCurrentShippingInfor({
+      ...currentShippingInfor,
+      [evt.target.name]: evt.target.value,
+    });
+    console.log(currentShippingInfor);
+  };
+
+  const handleSelectMyShippingInfor = () => {
+    setIsSelected(true)
+  }
+  const handleSelectNewShippingInfor = () => {
+    setIsSelected(false)
   }
 
-  const handleShippingInfor = (state) => {
-    setShippingInfor(state)
-    sessionStorage.setItem('shippingInfor', JSON.stringify(shippingInfor)); 
-  }
+  const handleShippingInfor = () => {
+    setShippingInfor([currentShippingInfor])
+    console.log(shippingInfor);
+    sessionStorage.setItem("shippingInfor", JSON.stringify(shippingInfor));
+  };
 
   return (
     <>
@@ -49,6 +73,7 @@ export default function CheckoutInfor() {
                             className="nav-link active"
                             data-toggle="tab"
                             href="#checkout-guest-form"
+                            onClick={handleSelectMyShippingInfor}
                           >
                             MY INFORMATION
                           </a>
@@ -58,13 +83,16 @@ export default function CheckoutInfor() {
                             className="nav-link"
                             data-toggle="tab"
                             href="#checkout-login-form"
+                            onClick={handleSelectNewShippingInfor}
                           >
                             NEW INFORMATION
                           </a>
                         </li>
                       </ul>
                       <div className="tab-content">
-                        {/* My Information */}
+                        {isSelected 
+                        ? 
+                        // My Shipphing Infor
                         <div
                           className="tab-pane fade in active show"
                           id="checkout-guest-form"
@@ -79,9 +107,7 @@ export default function CheckoutInfor() {
                               <input
                                 type="hidden"
                                 name="userID"
-                                value={myShippingInfor.id}
-                                
-                              
+                                value={user?.id || ''}
                               />
                               <div className="form-group row">
                                 <label htmlFor="firstName">First Name</label>
@@ -90,9 +116,9 @@ export default function CheckoutInfor() {
                                   name="firstName"
                                   type="text"
                                   placeholder="First Name"
-                                  value={myShippingInfor?.firstName || ""}
-                                  
-                                  disabled readOnly
+                                  value={user?.firstName || ''}
+                                  disabled
+                                  readOnly
                                 />
                               </div>
                               <div className="form-group row">
@@ -102,8 +128,9 @@ export default function CheckoutInfor() {
                                   name="lastName"
                                   type="text"
                                   placeholder="Last Name"
-                                  value={myShippingInfor?.lastName || ""}
-                                  disabled readOnly
+                                  value={user?.lastName || ''}
+                                  disabled
+                                  readOnly
                                 />
                               </div>
                               <div className="form-group row">
@@ -113,8 +140,9 @@ export default function CheckoutInfor() {
                                   name="email"
                                   type="email"
                                   placeholder="Email"
-                                  value={myShippingInfor?.email || ""}
-                                  disabled readOnly
+                                  value={user?.email || ''}
+                                  disabled
+                                  readOnly
                                 />
                               </div>
                               <div className="form-group row">
@@ -124,8 +152,9 @@ export default function CheckoutInfor() {
                                   name="phone"
                                   type="text"
                                   placeholder="Phone"
-                                  value={myShippingInfor?.phone || ""}
-                                  disabled readOnly
+                                  value={user?.phone || ''}
+                                  disabled
+                                  readOnly
                                 />
                               </div>
                               <div className="hidden-comment">
@@ -139,8 +168,9 @@ export default function CheckoutInfor() {
                                     type="text"
                                     defaultValue=""
                                     placeholder=" Birthdate"
-                                    value={myShippingInfor.address}
-                                    disabled readOnly
+                                    value={user?.address || ''}
+                                    disabled
+                                    readOnly
                                   />
                                 </div>
                               </div>
@@ -164,7 +194,7 @@ export default function CheckoutInfor() {
                             </div>
                           </form>
                         </div>
-                        {/* New Information */}
+                        : //New Shipping Infor
                         <div
                           className="tab-pane fade in active show"
                           id="checkout-guest-form"
@@ -228,10 +258,10 @@ export default function CheckoutInfor() {
                                   </label>
                                   <input
                                     className="form-control"
-                                    name="birthday"
+                                    name="address"
                                     type="text"
                                     defaultValue=""
-                                    placeholder=" Birthdate"
+                                    placeholder="Your Address"
                                     onChange={handleOnchange}
                                   />
                                 </div>
@@ -255,7 +285,7 @@ export default function CheckoutInfor() {
                               </div>
                             </div>
                           </form>
-                        </div>
+                        </div>}
                       </div>
                     </div>
                     <div className="checkout-personal-step">

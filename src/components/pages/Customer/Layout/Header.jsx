@@ -1,33 +1,28 @@
-import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { cartAct } from "../../../../redux/slice/cartSlice";
 import { useSelector, useDispatch } from "react-redux";
 
 export default function Header() {
   const carts = useSelector((c) => c.carts);
+  console.log(carts);
+
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const user = JSON.parse(localStorage.getItem("myuser") || "{}");
+
+  // useEffect(() => {
+  //    localStorage.setItem("mycart", JSON.stringify(cartAct));
+  // },[carts])
+
   const handleDeleteItemInCart = (id) => {
     dispatch(cartAct.deleteItemInCart(id));
   };
-  const user = JSON.parse(localStorage.getItem("myuser") || "[]");
-  console.log(user);
-  const navigate = useNavigate();
-
-  const [isLogin, setIsLogin] = useState(false);
-
-  useEffect(() => {
-    if (user != "") {
-      setIsLogin(true);
-      console.log("Đã đăng nhập");
-    } else {
-      setIsLogin(false);
-      console.log("Chưa đăng nhập");
-    }
-  }, [isLogin]);
 
   const handleSignOut = () => {
-    setIsLogin(false);
-    navigate("/login");
+    dispatch({ type: "USER_LOGOUT" });
+    navigate("/Login");
   };
 
   return (
@@ -127,14 +122,14 @@ export default function Header() {
                   <div className="myaccount-title">
                     <a href="#acount" data-toggle="collapse" className="acount">
                       <i className="fa fa-user" aria-hidden="true" />
-                      {isLogin ? (
-                        <span>
-                          {" "}
-                          Welcom <strong>{user.nickName}</strong> !
-                        </span>
-                      ) : (
-                        <span> Welcom to Furnitica !</span>
-                      )}
+                      <span>
+                        {" "}
+                        Welcom{" "}
+                        <strong>
+                          {user.firstName + " " + user.lastName}
+                        </strong>{" "}
+                        !
+                      </span>
                       <i className="fa fa-angle-down" aria-hidden="true" />
                     </a>
                   </div>
@@ -151,46 +146,18 @@ export default function Header() {
                           <span>My Account</span>
                         </a>
                       </div>
-                      {isLogin ? (
-                        <div>
-                          <a
-                            className="login"
-                            rel="nofollow"
-                            title="Log out"
-                            onClick={handleSignOut}
-                          >
-                            <i className="fa fa-sign-in" />
-                            <span>Sign out</span>
-                          </a>
-                        </div>
-                      ) : (
-                        <div>
-                          <Link
-                            className="login"
-                            to={"/login"}
-                            rel="nofollow"
-                            title="Log in to your customer account"
-                          >
-                            <i className="fa fa-sign-in" />
-                            <span>Sign in</span>
-                          </Link>
-                        </div>
-                      )}
-                      {isLogin ? (
-                        ""
-                      ) : (
-                        <div>
-                          <a
-                            className="register"
-                            href="user-register.html"
-                            rel="nofollow"
-                            title="Register Account"
-                          >
-                            <i className="fa fa-user" />
-                            <span>Register Account</span>
-                          </a>
-                        </div>
-                      )}
+                      <div>
+                        <a
+                          className="login"
+                          rel="nofollow"
+                          title="Log out"
+                          onClick={handleSignOut}
+                        >
+                          <i className="fa fa-sign-in" />
+                          <span>Sign out</span>
+                        </a>
+                      </div>
+
                       <div>
                         <a
                           className="check-out"
@@ -283,7 +250,7 @@ export default function Header() {
                     </div>
                   </div>
                 </div>
-                {isLogin ? (
+                {carts != '[]' ? (
                   <div className="desktop_cart">
                     <div className="blockcart block-cart cart-preview tiva-toggle">
                       <div className="header-cart tiva-toggle-btn">
@@ -349,7 +316,10 @@ export default function Header() {
                                       >
                                         View Cart
                                       </Link>
-                                      <Link to={"/checkout-infor"} title="Checkout">
+                                      <Link
+                                        to={"/checkout-infor"}
+                                        title="Checkout"
+                                      >
                                         Checkout
                                       </Link>
                                     </div>
@@ -363,13 +333,7 @@ export default function Header() {
                     </div>
                   </div>
                 ) : (
-                  <div className="desktop_cart">
-                    <div className="blockcart block-cart cart-preview tiva-toggle">
-                      <div className="header-cart tiva-toggle-btn">
-                        <i className="fa fa-shopping-cart" aria-hidden="true" />
-                      </div>
-                    </div>
-                  </div>
+                  ""
                 )}
               </div>
             </div>

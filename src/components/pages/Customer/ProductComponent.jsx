@@ -1,52 +1,57 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { cartAct} from "../../../redux/slice/cartSlice"
-import { Link } from 'react-router-dom';
+import { cartAct } from "../../../redux/slice/cartSlice";
+import { Link } from "react-router-dom";
 
 export default function ProductComponent() {
   const { data: products } = useSelector((s) => s.products);
+  // const [isSort, setIsSort] = useState(false);
+  // const [sortTarget, setSortTarget] = useState('') 
+  console.log(products) 
+  
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch({ type: "PRODUCT_FECTH" });
-  }, []);
+    dispatch({ type: "PRODUCT_FETCH"});
+  },{});
+
+  // const handleSortAsc = (evt) => {
+  //   // setIsSort(true)
+  //   // setSortTarget(evt.target.name)
+  //   console.log(evt.target.name)
+  // }
 
   const handleAddToCart = (pro) => {
     dispatch(cartAct.addToCart(pro));
-    }
+  };
 
   return (
-    <>
+    <div id="product-sidebar-left">
       {/* Main content */}
       <div className="main-content">
         <div id="wrapper-site">
-          <div id="content-wrapper" className="full-width">
+          <div id="content-wrapper">
             <div id="main">
               <div className="page-home">
                 {/* breadcrumb */}
-                {/* <nav className="breadcrumb-bg">
+                <nav className="breadcrumb-bg">
                   <div className="container no-index">
                     <div className="breadcrumb">
                       <ol>
                         <li>
-                          <a href="#">
+                          <Link to={"/"}>
                             <span>Home</span>
-                          </a>
+                          </Link>
                         </li>
                         <li>
-                          <a href="#">
+                          <Link to={"/product"}>
                             <span>Living Room</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <span>Sofa</span>
-                          </a>
+                          </Link>
                         </li>
                       </ol>
                     </div>
                   </div>
-                </nav> */}
+                </nav>
                 <div className="container">
                   <div className="content">
                     <div className="row">
@@ -267,16 +272,16 @@ export default function ProductComponent() {
                                   <a href="#" className="cateItem">
                                     ORANGE JUICES
                                   </a>
-                                </div>
-                                <div className="cateTitle">
-                                  <a href="#" className="cateItem">
-                                    TOMATO JUICES
-                                  </a>
-                                </div>
-                                <div className="cateTitle">
-                                  <a href="#" className="cateItem">
-                                    APPLE JUICES
-                                  </a>
+                                  <div className="cateTitle">
+                                    <a href="#" className="cateItem">
+                                      TOMATO JUICES
+                                    </a>
+                                  </div>
+                                  <div className="cateTitle">
+                                    <a href="#" className="cateItem">
+                                      APPLE JUICES
+                                    </a>
+                                  </div>
                                 </div>
                               </div>
                             </div>
@@ -304,16 +309,16 @@ export default function ProductComponent() {
                                   <a href="#" className="cateItem">
                                     ORANGE JUICES
                                   </a>
-                                </div>
-                                <div className="cateTitle">
-                                  <a href="#" className="cateItem">
-                                    TOMATO JUICES
-                                  </a>
-                                </div>
-                                <div className="cateTitle">
-                                  <a href="#" className="cateItem">
-                                    APPLE JUICES
-                                  </a>
+                                  <div className="cateTitle">
+                                    <a href="#" className="cateItem">
+                                      TOMATO JUICES
+                                    </a>
+                                  </div>
+                                  <div className="cateTitle">
+                                    <a href="#" className="cateItem">
+                                      APPLE JUICES
+                                    </a>
+                                  </div>
                                 </div>
                               </div>
                             </div>
@@ -371,7 +376,7 @@ export default function ProductComponent() {
                                   <span className="checkmark" />
                                 </label>
                                 <a href="#">
-                                  <b>ottoman</b>
+                                  <b>OTTOMAN</b>
                                   <span className="quantity">(24)</span>
                                 </a>
                               </li>
@@ -664,50 +669,68 @@ export default function ProductComponent() {
                       </div>
                       {/* Product List */}
                       <div className="col-sm-8 col-lg-9 col-md-8 product-container">
-                        <h1>Product List</h1>
+                        <h1>Lingving Room</h1>
                         <div className="js-product-list-top firt nav-top">
                           <div className="d-flex justify-content-around row">
-                            <div className="col col-xs-12">
+                            <div className="col col-xs-12 ">
                               <ul className="nav nav-tabs">
                                 <li>
                                   <a
                                     href="#grid"
                                     data-toggle="tab"
-                                    className="active show fa fa-th-large"
+                                    className="fa fa-th-large"
                                   />
                                 </li>
                                 <li>
                                   <a
                                     href="#list"
                                     data-toggle="tab"
-                                    className="fa fa-list-ul"
+                                    className="active show fa fa-list-ul"
                                   />
                                 </li>
                               </ul>
                               <div className="hidden-sm-down total-products">
-                                <p>There are 12 products.</p>
+                                <p>There are {products.length} products.</p>
                               </div>
                             </div>
-                            <div className="col col-xs-12">
-                              <div className="d-flex sort-by-row justify-content-lg-end justify-content-md-end">
+                            {/* search */}
+                            <div
+                              id="search_widget"
+                              className="col col-xs-12 align-items-center justify-content-end d-flex"
+                            >
+                              <form method="get" action="#">
+                                <input
+                                  type="text"
+                                  name="s"
+                                  defaultValue=""
+                                  placeholder="Search ..."
+                                  className="ui-autocomplete-input"
+                                  autoComplete="off"
+                                />
+                                <button type="submit">
+                                  <i className="fa fa-search" />
+                                </button>
+                              </form>
+                            </div>
+                            {/* <div className="col col-xs-12">
+                              <div className="d-flex sort-by-row justify-content-end">
                                 <div className="products-sort-order dropdown">
                                   <select className="select-title">
-                                    <option value="">Sort by</option>
-                                    <option value="">Name, A to Z</option>
-                                    <option value="">Name, Z to A</option>
-                                    <option value="">Price, low to high</option>
+                                    <option value="" >Sort by</option>
+                                    <option value="" name="name" onClick={handleSortAsc}>Name, A to Z</option>
+                                    <option value="" name="name">Name, Z to A</option>
+                                    <option value="" name="price" onClick={handleSortAsc} >onClick={handleSortAsc}</option>
                                     <option value="">Price, high to low</option>
                                   </select>
                                 </div>
                               </div>
-                            </div>
+                            </div> */}
                           </div>
                         </div>
+                        
                         <div className="tab-content product-items">
-                          <div
-                            id="grid"
-                            className="related tab-pane fade in active show"
-                          >
+                          {/* grid type of product list */}
+                          <div id="grid" className="related tab-pane fade">
                             <div className="row">
                               {products.map((p) => (
                                 <div
@@ -716,320 +739,224 @@ export default function ProductComponent() {
                                 >
                                   <div className="product-miniature js-product-miniature item-one first-item">
                                     <div className="thumbnail-container border">
-                                      <a href="product-detail.html">
+                                      <Link to={"/details"}>
                                         <img
                                           className="img-fluid image-cover"
                                           src={p.image}
-                                          alt="img"
+                                          alt={p.name}
                                         />
-                                      </a>
-                                      {/* <div className="highlighted-informations">
-                                        <div className="variant-links">
-                                          <a
-                                            href="#"
-                                            className="color beige"
-                                            title="Beige"
-                                          ></a>
-                                          <a
-                                            href="#"
-                                            className="color orange"
-                                            title="Orange"
-                                          ></a>
-                                          <a
-                                            href="#"
-                                            className="color green"
-                                            title="Green"
-                                          ></a>
-                                        </div>
-                                        <a
-                                          href="#"
-                                          className="color green"
-                                          title="Green"
-                                        ></a>
-                                      </div> */}
-                                      {/* <a
-                                        href="#"
-                                        className="color green"
-                                        title="Green"
-                                      ></a> */}
+                                        <img
+                                          className="img-fluid image-secondary"
+                                          src={p.image}
+                                          alt={p.name}
+                                        />
+                                      </Link>
                                     </div>
-                                    {/* <a
-                                      href="#"
-                                      className="color green"
-                                      title="Green"
-                                    ></a> */}
                                     <div className="product-description">
-                                      {/* <a
-                                        href="#"
-                                        className="color green"
-                                        title="Green"
-                                      ></a> */}
                                       <div className="product-groups">
-                                        {/* <a
-                                          href="#"
-                                          className="color green"
-                                          title="Green"
-                                        ></a>
                                         <div className="product-title">
-                                          <a
-                                            href="#"
-                                            className="color green"
-                                            title="Green"
-                                          ></a> */}
                                           <a href="product-detail.html">
                                             {p.name}
                                           </a>
                                         </div>
-                                        <div className="rating">
-                                          <div className="star-content">
-                                            <div className="star">
-                                              <div className="star">
-                                                <div className="star">
-                                                  <div className="star">
-                                                    <div className="star"></div>
-                                                  </div>
-                                                  <div className="product-group-price">
-                                                    <div className="product-price-and-shipping">
-                                                      <span className="price">
-                                                        £{p.price}
-                                                      </span>
-                                                    </div>
-                                                  </div>
-                                                </div>
-                                                <div className="product-buttons d-flex justify-content-center">
-                                                  <form
-                                                    action="#"
-                                                    method="post"
-                                                    className="formAddToCart"
-                                                  >
-                                                    <input
-                                                      type="hidden"
-                                                      name="id_product"
-                                                      
-                                                    />
-                                                    <a
-                                                      className="add-to-cart"
-                                                      href="#"
-                                                      onClick={e => {e.preventDefault();handleAddToCart(p)}}
-                                                    >
-                                                      <i
-                                                        className="fa fa-shopping-cart"
-                                                        aria-hidden="true"
-                                                      ></i>
-                                                    </a>
-                                                    <i
-                                                      className="fa fa-shopping-cart"
-                                                      aria-hidden="true"
-                                                    >
-                                                      <a
-                                                        className="addToWishlist"
-                                                        href="#"
-                                                        data-rel="{1}"
-                                                      >
-                                                        <i
-                                                          className="fa fa-heart"
-                                                          aria-hidden="true"
-                                                        ></i>
-                                                      </a>
-                                                      <i
-                                                        className="fa fa-heart"
-                                                        aria-hidden="true"
-                                                      >
-                                                        <a
-                                                          href="#"
-                                                          className="quick-view hidden-sm-down"
-                                                          data-link-action="quickview"
-                                                        >
-                                                          <i
-                                                            className="fa fa-eye"
-                                                            aria-hidden="true"
-                                                          ></i>
-                                                        </a>
-                                                        <i
-                                                          className="fa fa-eye"
-                                                          aria-hidden="true"
-                                                        ></i>
-                                                      </i>
-                                                    </i>
-                                                  </form>
-                                                </div>
-                                                {/* <i
-                                                  className="fa fa-shopping-cart"
-                                                  aria-hidden="true"
-                                                >
-                                                  <i
-                                                    className="fa fa-heart"
-                                                    aria-hidden="true"
-                                                  >
-                                                    <i
-                                                      className="fa fa-eye"
-                                                      aria-hidden="true"
-                                                    ></i>
-                                                  </i>
-                                                </i> */}
+
+                                        <div className="product-group-price">
+                                          <div className="product-price-and-shipping">
+                                            {p.discount != 0 ? (
+                                              <div className="product-price-and-shipping">
+                                                <p className="text-danger">
+                                                  $ {p.price}
+                                                </p>
+                                                <span className="price">
+                                                  On discount{" "}
+                                                  <strong>
+                                                    $ 
+                                                    {p.price -
+                                                      (p.price * p.discount) /
+                                                        100}
+                                                  </strong>
+                                                </span>
                                               </div>
-                                              <i
-                                                className="fa fa-shopping-cart"
-                                                aria-hidden="true"
-                                              >
-                                                <i
-                                                  className="fa fa-heart"
-                                                  aria-hidden="true"
-                                                >
-                                                  <i
-                                                    className="fa fa-eye"
-                                                    aria-hidden="true"
-                                                  ></i>
-                                                </i>
-                                              </i>
-                                            </div>
+                                            ) : (
+                                              <div className="product-group-price">
+                                                <span className="price">
+                                                  $ {p.price}
+                                                </span>
+                                              </div>
+                                            )}
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div className="product-buttons d-flex justify-content-center">
+                                        <form
+                                          action="#"
+                                          method="post"
+                                          className="formAddToCart"
+                                        >
+                                          <input
+                                            type="hidden"
+                                            name="id_product"
+                                            defaultValue={1}
+                                          />
+                                          <a
+                                            className="add-to-cart"
+                                            href="#"
+                                            data-button-action="add-to-cart"
+                                            onClick={e => {e.preventDefault();handleAddToCart(p)}}
+                                          >
                                             <i
                                               className="fa fa-shopping-cart"
                                               aria-hidden="true"
-                                            >
-                                              <i
-                                                className="fa fa-heart"
-                                                aria-hidden="true"
-                                              >
-                                                <i
-                                                  className="fa fa-eye"
-                                                  aria-hidden="true"
-                                                ></i>
-                                              </i>
-                                            </i>
-                                          </div>
+                                            />
+                                          </a>
+                                        </form>
+                                        <a
+                                          className="addToWishlist"
+                                          href="#"
+                                          data-rel={1}
+                                        >
                                           <i
-                                            className="fa fa-shopping-cart"
+                                            className="fa fa-heart"
                                             aria-hidden="true"
-                                          >
-                                            <i
-                                              className="fa fa-heart"
-                                              aria-hidden="true"
-                                            >
-                                              <i
-                                                className="fa fa-eye"
-                                                aria-hidden="true"
-                                              ></i>
-                                            </i>
-                                          </i>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                // </div>
-                              ))}
-                            </div>
-                          </div>
-                          <div id="list" className="related tab-pane fade">
-                            <div className="row">
-                              {products.map(p => (<div className="item col-md-12" key={p.id}>
-                                <div className="product-miniature item-one first-item">
-                                  <div className="row">
-                                    <div className="col-md-4">
-                                      <div className="thumbnail-container border">
-                                        <a href="product-detail.html">
-                                          <img
-                                            className="img-fluid image-cover"
-                                            src={p.image}
-                                            alt="img"
+                                          />
+                                        </a>
+                                        <a
+                                          href="#"
+                                          className="quick-view hidden-sm-down"
+                                          data-link-action="quickview"
+                                        >
+                                          <i
+                                            className="fa fa-eye"
+                                            aria-hidden="true"
                                           />
                                         </a>
                                       </div>
                                     </div>
-                                    <div className="col-md-8">
-                                      <div className="product-description">
-                                        <div className="product-groups">
-                                          <div className="product-title">
-                                            <Link to={'product/${p.id}'} >
-                                              {p.name}
-                                            </Link>
-                                            <span className="info-stock">
-                                              <i
-                                                className="fa fa-check-square-o"
-                                                aria-hidden="true"
-                                              />
-                                              In Stock
-                                            </span>
-                                          </div>
-                                          <div className="rating">
-                                            <div className="star-content">
-                                              <div className="star" />
-                                              <div className="star" />
-                                              <div className="star" />
-                                              <div className="star" />
-                                              <div className="star" />
-                                            </div>
-                                          </div>
-                                          <div className="product-group-price">
-                                            <div className="product-price-and-shipping">
-                                              <span className="price">
-                                                £{p.price}
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                          {/* List type of Product lít */}
+                          <div
+                            id="list"
+                            className="related tab-pane fade in active show"
+                          >
+                            <div className="row">
+                              {products.map((p) => (
+                                <div className="item col-md-12" key={p.id}>
+                                  <div className="product-miniature item-one first-item">
+                                    <div className="row">
+                                      <div className="col-md-4">
+                                        <div className="thumbnail-container border">
+                                          <a href="product-detail.html">
+                                            <img
+                                              className="img-fluid image-cover"
+                                              src={p.image}
+                                              alt={p.name}
+                                            />
+                                            <img
+                                              className="img-fluid image-secondary"
+                                              src={p.image}
+                                              alt={p.name}
+                                            />
+                                          </a>
+                                        </div>
+                                      </div>
+                                      <div className="col-md-8">
+                                        <div className="product-description">
+                                          <div className="product-groups">
+                                            <div className="product-title">
+                                              <a href="product-detail.html">
+                                                {p.name}
+                                              </a>
+                                              <span className="info-stock">
+                                                <i
+                                                  className="fa fa-check-square-o"
+                                                  aria-hidden="true"
+                                                />
+                                                In Stock
                                               </span>
                                             </div>
+
+                                            <div className="product-group-price">
+                                              {p.discount != 0 ? (
+                                                <div className="product-price-and-shipping">
+                                                  <p className="text-danger text-decoration-line-through">
+                                                    $ {p.price}
+                                                  </p>
+                                                  <span className="price">
+                                                    On discount{" "}
+                                                    <strong>
+                                                      $ 
+                                                      {p.price -
+                                                        (p.price * p.discount) /
+                                                          100}
+                                                    </strong>
+                                                  </span>
+                                                </div>
+                                              ) : (
+                                                <div className="product-group-price">
+                                                  <span className="price">
+                                                    $ {p.price}
+                                                  </span>
+                                                </div>
+                                              )}
+                                            </div>
+                                            <div className="discription">
+                                              Lorem ipsum dolor sit amet,
+                                              consectetur adipiscing elit. Etiam
+                                              ultricies eget velit vitae
+                                              bibendum. Cras condimentum libero
+                                              a lectus ultricies...
+                                            </div>
                                           </div>
-                                          <div className="discription">
-                                            Lorem ipsum dolor sit amet,
-                                            consectetur adipiscing elit. Etiam
-                                            ultricies eget velit vitae bibendum.
-                                            Cras condimentum libero a lectus
-                                            ultricies...
-                                          </div>
-                                        </div>
-                                        <div className="product-buttons d-flex">
-                                          <form
-                                            action="#"
-                                            method="post"
-                                            className="formAddToCart"
-                                          >
+                                          <div className="product-buttons d-flex">
+                                            <form
+                                              action="#"
+                                              method="post"
+                                              className="formAddToCart"
+                                            >
+                                              <a
+                                                className="add-to-cart"
+                                                href="#"
+                                                data-button-action="add-to-cart"
+                                                onClick={e => {e.preventDefault();handleAddToCart(p)}}
+                                              >
+                                                <i
+                                                  className="fa fa-shopping-cart"
+                                                  aria-hidden="true"
+                                                />
+                                                Add to cart
+                                              </a>
+                                            </form>
                                             <a
-                                              className="add-to-cart"
+                                              className="addToWishlist"
                                               href="#"
-                                              data-button-action="add-to-cart"
-                                              onClick={e => {e.preventDefault();handleAddToCart(p)}}
+                                              data-rel={1}
                                             >
                                               <i
-                                                className="fa fa-shopping-cart"
+                                                className="fa fa-heart"
                                                 aria-hidden="true"
                                               />
-                                              Add to cart
                                             </a>
-                                          </form>
-                                          <a
-                                            className="addToWishlist"
-                                            href="#"
-                                            data-rel={1}
-                                            onClick=""
-                                          >
-                                            <i
-                                              className="fa fa-heart"
-                                              aria-hidden="true"
-                                            />
-                                          </a>
-                                          <a
-                                            href="#"
-                                            className="quick-view hidden-sm-down"
-                                            data-link-action="quickview"
-                                          >
-                                            <i
-                                              className="fa fa-eye"
-                                              aria-hidden="true"
-                                            />
-                                          </a>
+                                          </div>
                                         </div>
                                       </div>
                                     </div>
                                   </div>
                                 </div>
-                              </div>) )}
+                              ))}
                             </div>
                           </div>
                         </div>
+
                         {/* pagination */}
                         <div className="pagination">
                           <div className="js-product-list-top ">
                             <div className="d-flex justify-content-around row">
                               <div className="showing col col-xs-12">
-                                <span>SHOWING 1-{products.length} OF {products.length} ITEM(S)</span>
+                                <span>SHOWING 1-3 OF 3 ITEM(S)</span>
                               </div>
                               <div className="page-list col col-xs-12">
                                 <ul>
@@ -1093,6 +1020,6 @@ export default function ProductComponent() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

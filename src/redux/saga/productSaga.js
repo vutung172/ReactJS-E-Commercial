@@ -16,7 +16,7 @@ export const productSaga = {
         try {
             console.log("productSaga", action);
             yield call(productApi.post, action.payload);
-            yield put({type: "PRODUCT_FECTH"});
+            yield put({type: "PRODUCT_FETCH"});
         } catch (error) {
             console.log(error);
         }
@@ -24,7 +24,7 @@ export const productSaga = {
     put: function* (action) {
         try {
             yield call(productApi.put, action.payload);
-            yield put({type: "PRODUCT_FECTH"});
+            yield put({type: "PRODUCT_FETCH"});
         } catch (error) {
             console.log(error);
         }
@@ -32,9 +32,10 @@ export const productSaga = {
     delete: function* (action) {
         try {
             yield call(productApi.delete, action.payload);
-            yield put({type: "PRODUCT_FECTH"});
+            yield put({type: "PRODUCT_FETCH"});
         } catch (error) {
             console.log(error);
         }
     }
+    
 }

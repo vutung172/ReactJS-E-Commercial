@@ -9,8 +9,8 @@ export const userApi = {
         let response = await http.get(`users?_page=${page}&_limit=${limit}`);
         return response.data;
     },
-    getLoginByUserID: async (userId) => {
-        let response = await http.get(`users?userID=${userId}`);
+    getLogin: async (userId,password) => {
+        let response = await http.get(`users?userID=${userId}&password=${password}`);
         return response.data
     }
 }

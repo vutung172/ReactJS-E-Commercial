@@ -1,25 +1,39 @@
 import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function LoginComponent() {
   const [userCurrent, setUserCurrent] = useState({});
-  const { data: users } = useSelector((u) => u.users);
-
 
   const [isPassword, setIsPassword] = useState(true);
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLoginClicked, setIsLoginCliked] = useState(false);
 
-  console.log(users);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const user = useSelector(u => u.users.current)
+  
+  const handleLogin = () => {
+    dispatch({ type: "USER_LOGIN", payload: userCurrent});
+    console.log(user);
+  };
 
   useEffect(() => {
-    if (isLogin) {
-      dispatch({ type: "USER_FETCH", payload: users });
-      localStorage.setItem("myuser", "[]");
-    } else {setIsLogin(true)}
-  }, [isLogin]);
+    console.log("USER_LOGOUT");
+    if (user && user.role) {
+      if (user.role === 'customer') {
+        navigate('/')
+        console.log("customer")
+      } else if (user.role === 'admin') {
+        navigate('/admin')
+        console.log("admin")
+      } else {navigate('/login');
+      console.log("login page")}
+    } else {
+      navigate('/login');
+      console.log("login page")
+      // dispatch({ type: "USER_LOGOUT"})
+    }
+  },[user, navigate]);
 
   const handleShowPassword = () => {
     if (isPassword) {
@@ -29,42 +43,22 @@ export default function LoginComponent() {
     }
   };
 
+  const handleConfirm = () => {
+    if (!isLoginClicked) {
+      setIsLoginCliked(true);
+    } else {
+      setIsLoginCliked(false);
+    }
+  };
+
   const handleCurrent = (evt) => {
     setUserCurrent({ ...userCurrent, [evt.target.name]: evt.target.value });
     console.log(evt.target.name);
     console.log(evt.target.value);
   };
 
+  
 
-  const handleLogin = () => {
-    const user = users.filter((u) => u.userID == userCurrent.userId);
-    
-
-    if (user == {}) {
-      alert("User ID không đúng");
-      localStorage.setItem("myuser", "[]");
-    } else if (userCurrent.password != user[0].password) {
-      alert("Mật Khẩu không đúng");
-      localStorage.setItem("myuser", "[]");
-      console.log(userCurrent.password);
-    } else {
-      localStorage.setItem("myuser", JSON.stringify(user[0]) || "[]");
-      switch (user[0].role) {
-        case "admin":
-          console.log("admin");
-          navigate("/admin");
-          break;
-        case "customer":
-          console.log("customer");
-          navigate("/");
-          break;
-        case "master":
-          console.log("master")
-          navigate("/");
-
-      }
-    }
-  };
   return (
     <>
       <div id="wrapper-site">
@@ -73,7 +67,7 @@ export default function LoginComponent() {
             <div className="container">
               <h1 className="text-center title-page">Log In</h1>
               <div className="login-form">
-                <form id="customer-form">
+                <form>
                   <div>
                     <input
                       type="hidden"
@@ -116,7 +110,37 @@ export default function LoginComponent() {
                         </label>
                       </div>
                     </div>
-
+                    <div className="form-check">
+                      <input
+                        className="form-check-input"
+                        type="radio"
+                        name="flexRadioDefault"
+                        id="flexRadioDefault1"
+                        disabled={!userCurrent.userId || !userCurrent.password}
+                        onClick={handleConfirm}
+                      />
+                      <label
+                        className="form-check-label"
+                        htmlFor="flexRadioDefault1"
+                      >
+                        Agreement Confirm
+                      </label>
+                    </div>
+                    <div className="form-check">
+                      <input
+                        className="form-check-input"
+                        type="radio"
+                        name="radio2"
+                        id="radio2"
+                        defaultChecked={userCurrent == '' ? "checked" : ""}
+                      />
+                      <label
+                        className="form-check-label"
+                        htmlFor="flexRadioDefault1"
+                      >
+                        Default radio
+                      </label>
+                    </div>
                     <div className="no-gutters text-center">
                       <div className="forgot-password">
                         <Link to={"register"} rel="nofollow">
@@ -125,17 +149,17 @@ export default function LoginComponent() {
                       </div>
                     </div>
                   </div>
+
                   <div className="clearfix">
                     <div className="text-center no-gutters">
-                      <input type="hidden" name="Login" />
-                      <button
+                      <input type="hidden" />
+                      <a
                         className="btn btn-primary"
-                        data-link-action=""
-                        type="submit"
+                        id="btnSign-in"
                         onClick={handleLogin}
                       >
                         Sign in
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </form>

@@ -19,7 +19,7 @@
       "userID": "user2",
       "firstName": "user",
       "lastName": "two",
-      "password": "22222222",
+      "password": "12345",
       "email": "2@example.com",
       "phone": "22222222",
       "address": "Address-2",
@@ -57,15 +57,7 @@
       "role": "master"
     }
   ],
-  "products": [
-    {
-      "name": "new product 2",
-      "price": 1300,
-      "categoryId": 2,
-      "discount": 12,
-      "image": "https://firebasestorage.googleapis.com/v0/b/e-website-4efbb.appspot.com/o/filesUpload%2FProducts%2FIMG%2Fprinted-summer-dress4.jpg?alt=media&token=4e584d50-2760-4142-99ee-6aade3a8a96b",
-      "id": "004053f5-5330-4266-98bf-bb31b1e6e729"
-    },
+  "products": [ 
     {
       "id": "2ef5247b-f9f6-4584-b972-ffe9eac6b23e",
       "name": "New product 3",
@@ -77,7 +69,7 @@
     {
       "name": "New product 4",
       "price": 1400,
-      "discount": 14,
+      "discount": 0,
       "image": "https://firebasestorage.googleapis.com/v0/b/e-website-4efbb.appspot.com/o/filesUpload%2FProducts%2FIMG%2Ffaded-short-sleeves-tshirt.jpg?alt=media&token=ce2ff7b3-179b-420c-9bda-52cea78bf373",
       "categoryId": 1,
       "id": "0d5daf3a-c645-4e33-b4a7-bf9615dedddf"
@@ -91,6 +83,14 @@
       "id": "0a238fcf-205e-44c6-be20-ff80f7abead4"
     },
     {
+      "name": "new product 2",
+      "price": 1300,
+      "categoryId": 2,
+      "discount": 12,
+      "image": "https://firebasestorage.googleapis.com/v0/b/e-website-4efbb.appspot.com/o/filesUpload%2FProducts%2FIMG%2Fprinted-summer-dress4.jpg?alt=media&token=4e584d50-2760-4142-99ee-6aade3a8a96b",
+      "id": "004053f5-5330-4266-98bf-bb31b1e6e729"
+    },
+    {
       "name": "new prodcut 6",
       "price": 1600,
       "categoryId": "2",
@@ -99,6 +99,7 @@
       "id": "c1bdce23-590b-4bd1-b67b-91cb135cbdc2"
     }
   ],
+  
   "Category": [
     {
       "id": 1,

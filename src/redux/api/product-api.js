@@ -5,7 +5,6 @@ export const productApi = {
         let response = await http.get('products');
         return response.data;
     },
-
     post: async (data) => {
         await http.post('products', data);
     },

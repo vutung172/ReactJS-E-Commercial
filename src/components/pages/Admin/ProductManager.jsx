@@ -6,7 +6,7 @@ import { storage } from "../../../config/firebase-config";
 
 export default function ProductManager() {
   const { data: products } = useSelector((s) => s.products);
-  const { data: categories } = useSelector((s) => s.categories);
+  const { data: categories } = useSelector((c) => c.categories);
   const dispatch = useDispatch();
   console.log(products)
 
