@@ -1,25 +1,41 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { cartAct } from "../../../redux/slice/cartSlice";
 import { Link } from "react-router-dom";
 
 export default function ProductComponent() {
   const { data: products } = useSelector((s) => s.products);
-  // const [isSort, setIsSort] = useState(false);
-  // const [sortTarget, setSortTarget] = useState('') 
-  console.log(products) 
-  
+  const [productSearch, setProductSearch] = useState(false);
+  const [sortTarget, setSortTarget] = useState({});
+  console.log(products);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch({ type: "PRODUCT_FETCH"});
-  },{});
+    console.log(sortTarget);
+    if (sortTarget == "") {
+      dispatch({ type: "PRODUCT_FETCH" });
+      console.log("none");
+    } else if (sortTarget !== "none") {
+      dispatch({ type: "PRODUCT_SORT", payload: sortTarget });
+      console.log("sort");
+    } else {
+      dispatch({ type: "PRODUCT_FETCH" });
+      console.log("none");
+    }
+  }, [sortTarget]);
 
-  // const handleSortAsc = (evt) => {
-  //   // setIsSort(true)
-  //   // setSortTarget(evt.target.name)
-  //   console.log(evt.target.name)
-  // }
+  const handleSort = (evt) => {
+    setSortTarget(evt.target.value || "{}");
+  };
+
+  const handleProductSearch = (evt) => {
+    setProductSearch(evt.target.value);
+    console.log(evt.target.value);
+  };
+  const handleSearch = () => {
+    dispatch({ type: "PRODUCT_SEARCH", payload: productSearch });
+  };
 
   const handleAddToCart = (pro) => {
     dispatch(cartAct.addToCart(pro));
@@ -698,36 +714,62 @@ export default function ProductComponent() {
                               id="search_widget"
                               className="col col-xs-12 align-items-center justify-content-end d-flex"
                             >
-                              <form method="get" action="#">
+                              <form>
                                 <input
                                   type="text"
-                                  name="s"
-                                  defaultValue=""
-                                  placeholder="Search ..."
+                                  name="search-product"
+                                  placeholder="Search product..."
                                   className="ui-autocomplete-input"
-                                  autoComplete="off"
+                                  onChange={handleProductSearch}
                                 />
-                                <button type="submit">
+                                <button
+                                  id="product-search"
+                                  type="btn"
+                                  className="seacrh-product none"
+                                  onClick={handleSearch}
+                                >
                                   <i className="fa fa-search" />
                                 </button>
                               </form>
                             </div>
-                            {/* <div className="col col-xs-12">
+                            <div className="col col-xs-12">
                               <div className="d-flex sort-by-row justify-content-end">
                                 <div className="products-sort-order dropdown">
-                                  <select className="select-title">
-                                    <option value="" >Sort by</option>
-                                    <option value="" name="name" onClick={handleSortAsc}>Name, A to Z</option>
-                                    <option value="" name="name">Name, Z to A</option>
-                                    <option value="" name="price" onClick={handleSortAsc} >onClick={handleSortAsc}</option>
-                                    <option value="">Price, high to low</option>
+                                  <select
+                                    className="select-title"
+                                    onChange={handleSort}
+                                  >
+                                    <option name="default" value="none">
+                                      Sort by
+                                    </option>
+                                    <option name="name" value="name&_order=asc">
+                                      Name, A to Z
+                                    </option>
+                                    <option
+                                      value="name&_order=desc"
+                                      name="name"
+                                    >
+                                      Name, Z to A
+                                    </option>
+                                    <option
+                                      value="price&_order=asc"
+                                      name="price"
+                                    >
+                                      Price, high to low
+                                    </option>
+                                    <option
+                                      name="price"
+                                      value="price&_order=desc"
+                                    >
+                                      Price, low to high{" "}
+                                    </option>
                                   </select>
                                 </div>
                               </div>
-                            </div> */}
+                            </div>
                           </div>
                         </div>
-                        
+
                         <div className="tab-content product-items">
                           {/* grid type of product list */}
                           <div id="grid" className="related tab-pane fade">
@@ -770,7 +812,7 @@ export default function ProductComponent() {
                                                 <span className="price">
                                                   On discount{" "}
                                                   <strong>
-                                                    $ 
+                                                    $
                                                     {p.price -
                                                       (p.price * p.discount) /
                                                         100}
@@ -802,7 +844,10 @@ export default function ProductComponent() {
                                             className="add-to-cart"
                                             href="#"
                                             data-button-action="add-to-cart"
-                                            onClick={e => {e.preventDefault();handleAddToCart(p)}}
+                                            onClick={(e) => {
+                                              e.preventDefault();
+                                              handleAddToCart(p);
+                                            }}
                                           >
                                             <i
                                               className="fa fa-shopping-cart"
@@ -888,7 +933,7 @@ export default function ProductComponent() {
                                                   <span className="price">
                                                     On discount{" "}
                                                     <strong>
-                                                      $ 
+                                                      $
                                                       {p.price -
                                                         (p.price * p.discount) /
                                                           100}
@@ -921,7 +966,10 @@ export default function ProductComponent() {
                                                 className="add-to-cart"
                                                 href="#"
                                                 data-button-action="add-to-cart"
-                                                onClick={e => {e.preventDefault();handleAddToCart(p)}}
+                                                onClick={(e) => {
+                                                  e.preventDefault();
+                                                  handleAddToCart(p);
+                                                }}
                                               >
                                                 <i
                                                   className="fa fa-shopping-cart"

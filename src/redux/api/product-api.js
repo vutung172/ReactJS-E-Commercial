@@ -13,6 +13,15 @@ export const productApi = {
     },
     delete: async (data) => {
         await http.delete("products/"+ data.id, data)
-    }
+    },
+    getsort: async (data) => {
+        let response = await http.get(`products?_sort=${data}`);
+        return response.data;
+    },
+    searchProductName: async (data) => {
+        let response = await http.get(`products?name=${data}`);
+        return response.data;
+    },
+
     
 }

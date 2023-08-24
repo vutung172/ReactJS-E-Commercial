@@ -36,6 +36,27 @@ export const productSaga = {
         } catch (error) {
             console.log(error);
         }
-    }
+    },
+    sort: function* (action) {
+        try {
+            console.log(action.payload);
+            let response = yield call(productApi.getsort, action.payload);
+            yield put(productAct.fetch(response));
+            console.log(response);
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    productSearch: function* (action) {
+        try {
+            console.log(action.payload);
+            let response = yield call(productApi.searchProductName, action.payload);
+            yield put(productAct.fetch(response));
+            console.log(response);
+        } catch (error) {
+            console.log(error);
+        }
+    },
+
     
 }

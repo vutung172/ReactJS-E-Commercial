@@ -67,14 +67,6 @@
       "image": "https://firebasestorage.googleapis.com/v0/b/e-website-4efbb.appspot.com/o/filesUpload%2FProducts%2FIMG%2Fprinted-summer-dress.jpg?alt=media&token=b7d80b34-9778-4171-9fe3-8d904a13d52e"
     },
     {
-      "name": "New product 4",
-      "price": 1400,
-      "discount": 0,
-      "image": "https://firebasestorage.googleapis.com/v0/b/e-website-4efbb.appspot.com/o/filesUpload%2FProducts%2FIMG%2Ffaded-short-sleeves-tshirt.jpg?alt=media&token=ce2ff7b3-179b-420c-9bda-52cea78bf373",
-      "categoryId": 1,
-      "id": "0d5daf3a-c645-4e33-b4a7-bf9615dedddf"
-    },
-    {
       "name": "New product 5",
       "categoryId": 2,
       "price": 1500,
@@ -91,7 +83,15 @@
       "id": "004053f5-5330-4266-98bf-bb31b1e6e729"
     },
     {
-      "name": "new prodcut 6",
+      "name": "New product 4",
+      "price": 1400,
+      "discount": 0,
+      "image": "https://firebasestorage.googleapis.com/v0/b/e-website-4efbb.appspot.com/o/filesUpload%2FProducts%2FIMG%2Ffaded-short-sleeves-tshirt.jpg?alt=media&token=ce2ff7b3-179b-420c-9bda-52cea78bf373",
+      "categoryId": 1,
+      "id": "0d5daf3a-c645-4e33-b4a7-bf9615dedddf"
+    },
+    {
+      "name": "new product 6",
       "price": 1600,
       "categoryId": "2",
       "discount": 16,
@@ -99,7 +99,7 @@
       "id": "c1bdce23-590b-4bd1-b67b-91cb135cbdc2"
     }
   ],
-  
+
   "Category": [
     {
       "id": 1,
@@ -125,7 +125,7 @@
   "orders": [
     {
       "id": "004053f5-5330-4266-1111-bb31b1e6e729",
-      "customerName": "user1",
+      "userID": "user1",
       "email": "1@example.com",
       "phone": "111111111",
       "purchasedDate": "2023-08-11 19:11:11",
